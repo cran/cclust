@@ -1,5 +1,5 @@
 require(mva)
-require(cclust)
+
 clustindex <- function( clres, x, index="all" )
   {
 ###needed measures 
@@ -14,64 +14,66 @@ clustindex <- function( clres, x, index="all" )
     
 ###indexes calculations
     index <- pmatch(index, c("calinski", "cindex", "db", "hartigan",
-                          "ratkovsky", "scott", "marriot", "ball",
+                          "ratkowsky", "scott", "marriot", "ball",
                           "trcovw", "tracew", "friedman",
-                          "rubin","ssi","likelihood","all"))
+                          "rubin","ssi","likelihood","xuindex","all"))
 
     if (is.na(index)) 
       stop("invalid clustering index")
     if (index == -1) 
       stop("ambiguous index")
 
-    vecallindex <- numeric(14)
+    vecallindex <- numeric(15)
 
-    if ((index==1) || (index==15))
+    if ((index==1) || (index==16))
       vecallindex[1] <- calinski(zgss,clres$size)
-    if ((index==2) || (index==15))
+    if ((index==2) || (index==16))
       {
         if (length(unique(x))==2)
           {
-            distdata <- countdist(x)
+            distdata <- count(x)
             minmaxd <- maxmindist(clres$size,distdata)
             vecallindex[2] <- cindex(clres$withins, minmaxd, clres$size)
           }
         else  vecallindex[2] <- NA
       }
-    if ((index==3) || (index==15))
+    if ((index==3) || (index==16))
       vecallindex[3] <- db(clres$withins, clres$centers, clres$cluster)
-    if ((index==4) || (index==15))
+    if ((index==4) || (index==16))
       vecallindex[4] <- hartigan(zgss)
-    if ((index==5) || (index==15))
+    if ((index==5) || (index==16))
       {
         varwithins <- varwithinss(x, clres$centers, clres$cluster)
         zvargss <- vargss(x, clres$size,varwithins)
         vecallindex[5] <-ratkowsky(zvargss, clres$size)
       }
-    if ((index==6) || (index==15))
+    if ((index==6) || (index==16))
        vecallindex[6] <- scott(zttw, clres$size)
-    if ((index==7) || (index==15))
+    if ((index==7) || (index==16))
        vecallindex[7] <- marriot(zttw,clres$size)
-    if ((index==8) || (index==15))
+    if ((index==8) || (index==16))
        vecallindex[8] <- ball(clres$withins, clres$size)
-    if ((index==9) || (index==15))
+    if ((index==9) || (index==16))
        vecallindex[9] <- tracecovw(zttw)
-    if ((index==10) || (index==15))
+    if ((index==10) || (index==16))
        vecallindex[10] <- tracew(zttw)
-    if ((index==11) || (index==15))
+    if ((index==11) || (index==16))
        vecallindex[11] <- friedman(zttw)
-    if ((index==12) || (index==15))
+    if ((index==12) || (index==16))
        vecallindex[12] <- rubin(zttw)
-    if ((index==13) || (index==15))
+    if ((index==13) || (index==16))
        vecallindex[13] <- ssi(clres$centers, clres$size)$ssiw 
-    if ((index==14) || (index==15))
+    if ((index==14) || (index==16))
        vecallindex[14] <- likelihood(x,clres$centers, clres$cluster)
+    if ((index==15) || (index==16))
+       vecallindex[15] <- xu(x, clres$size, zgss)
     
     names(vecallindex) <- c("calinski", "cindex", "db", "hartigan",
-                              "ratkovsky", "scott", "marriot", "ball",
+                              "ratkowsky", "scott", "marriot", "ball",
                               "trcovw", "tracew", "friedman",
-                              "rubin","ssi","likelihood")
+                              "rubin","ssi","likelihood","xuindex")
 
-    if (index < 15)
+    if (index < 16)
       vecallindex <- vecallindex[index]
 
     return(vecallindex)

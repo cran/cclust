@@ -136,3 +136,33 @@ likelihood <- function (x, centers, cluster)
     
     return(l)
   }
+
+#xu <- function(x, clsize, cluster)
+#  {
+#    xu1 <- 0
+#    xu2 <- 0
+#    n <- sum(clsize)
+#    k <- length(clsize)
+#        
+#    for (i in 1:k){
+#      detS <- prod(eigen(cov(x[cluster==i,]))$values)
+#      xu1 <- xu1 + clsize[i]/n * log(sqrt(detS))
+#      xu2 <- xu2 + clsize[i]/n * log(clsize[i]/n)
+#    }
+#    xuindex <- xu1-xu2
+#    return(xuindex)
+#  }
+
+xu <- function(x, clsize,  zgss)
+  {
+    n <- sum(clsize)
+    k <- length(clsize)
+    d <- dim(x)[2]
+    
+    xuindex <- d * log(sqrt(zgss$wgss/(d*(n^2)))) + log(k) 
+    return(xuindex)
+  }
+
+
+
+

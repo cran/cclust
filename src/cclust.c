@@ -1,5 +1,6 @@
 #include <math.h>
 #include <stdio.h>
+#include <S.h>
 
 double mdian1_(double *x, int *n);
 
@@ -49,6 +50,7 @@ int reloc(int *xrows, int *xcols, double *x, int *ncenters,
 	  int *dist)
 {
   int k,l,m; 
+  
 
   /* Initialize cluster size and centers with 0 */
   for(k=0;k<*ncenters;k++){
@@ -77,17 +79,19 @@ int reloc(int *xrows, int *xcols, double *x, int *ncenters,
   }
   else if(*dist == 1){
     for(k=0; k<*ncenters; k++){
-      double xk[clustersize[k]];
-      int i;
-      for (m=0; m<*xcols; m++){
-	i=0;
-	for (l=0; l<*xrows; l++)
-	  if(cluster[l]==k){
-	    xk[i] = x[l+(*xrows)*m];
-	    i++;
-	  }
-	centers[k+(*ncenters)*m] = mdian1_(xk, &clustersize[k]);
-	  }
+	double *xk;
+	int i;
+	xk = (double *) R_alloc(clustersize[k], sizeof(double));
+	
+	for (m=0; m<*xcols; m++){
+	    i=0;
+	    for (l=0; l<*xrows; l++)
+		if(cluster[l]==k){
+		    xk[i] = x[l+(*xrows)*m];
+		    i++;
+		}
+	    centers[k+(*ncenters)*m] = mdian1_(xk, &clustersize[k]);
+	}
     }
   }
   return 0;
@@ -101,9 +105,9 @@ int kmeans(int *xrows, int *xcols, double *x, int *ncenters,
 {
   int m;
   int change;
-  int clustnew[*xrows];
+  int *clustnew;
 
-  
+  clustnew = (int *) R_alloc(*xrows, sizeof(int));
   change = 1;
   *iter=0;
   while(change && ((*iter)++ < *itermax)){
@@ -234,7 +238,11 @@ int hardcl(int *xrows, int *xcols, double *x, int *ncenters,
 	     *methrate,double *par)
 {
   int m,k;
-  int t[*ncenters];
+  int *t;
+  
+
+  t = (int *) R_alloc(*ncenters, sizeof(int));
+  
   
   *iter=0;
   for (m=0;m<*ncenters;m++){
@@ -286,9 +294,12 @@ int  oncentb(int *xrows, int *xcols, double *x, int *ncenters,
 {
   int k, m, n, chang, a ,seira, minn;
   double e, h, l, aa, i,ermin,serror, mindist;
-  double dista[(*ncenters)];
-  int  ordd[(*ncenters)];
+  double *dista;
+  int  *ordd;
 
+  dista = (double *) R_alloc(*ncenters, sizeof(double));
+  ordd = (int *) R_alloc(*ncenters, sizeof(int));
+  
   ermin=0.0;
   serror=0.0;
 
@@ -351,6 +362,8 @@ int  oncentb(int *xrows, int *xcols, double *x, int *ncenters,
   }
 
   for (k=0;k<*xrows;k++){
+      mindist=0.0;/*just to avoid compiling warnings*/
+      minn=0; /*the same reason*/
       for (m=0;m<*ncenters;m++){
 	  dista[m] = 0.0;
 	  for(n=0;n<*xcols;n++){
@@ -367,7 +380,7 @@ int  oncentb(int *xrows, int *xcols, double *x, int *ncenters,
 	  if (m == 0)
 	  {
 	      mindist = dista[0]; minn = 0;
-	}
+	  }
 	  else
 	  {
 	      if (dista[m] < mindist)

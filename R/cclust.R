@@ -127,7 +127,7 @@ print.cclust <- function (clobj)
  
   }
 
-plot.cclust <- function(clobj, x, centers=TRUE, initcenters=TRUE,
+plot.cclust <- function(clobj, x, centers=TRUE, initcenters=FALSE,
                          color=rainbow(clobj$ncenters),...){
   
   x <- as.matrix(x)
