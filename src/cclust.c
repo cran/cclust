@@ -1,6 +1,6 @@
 #include <math.h>
 /*#include <stdio.h>*/
-#include <S.h>
+#include <R.h>
 
 double CC_median(double *x, int *n);
 
@@ -54,14 +54,14 @@ int reloc(int *xrows, int *xcols, double *x, int *ncenters,
 
   /* Initialize cluster size and centers with 0 */
   for(k=0;k<*ncenters;k++){
-    clustersize[k]=0;
-    for(m=0;m<*xcols;m++){
-      centers[k+(*ncenters)*m] = 0;
-    }
+/*      clustersize[k]=0;*/
+      for(m=0;m<*xcols;m++){
+	  centers[k+(*ncenters)*m] = 0;
+      }
   }
-
-  for(k=0; k<*xrows; k++)
-     clustersize[cluster[k]]++;
+  
+/*      for(k=0; k<*xrows; k++)
+	clustersize[cluster[k]]++; */
   
   if(*dist==0){
     /* Euclidean distance */
@@ -234,8 +234,7 @@ int  oncent(int *xrows, int *xcols, double *x, int *ncenters,
 int hardcl(int *xrows, int *xcols, double *x, int *ncenters,
 	     double *centers, int *cluster,
 	     int *itermax, int *iter, 
-	     int *clustersize, int *verbose, int *dist,int
-	     *methrate,double *par)
+	     int *clustersize, int *verbose, int *dist,int *methrate,double *par)
 {
   int m,k;
   int *t;
@@ -246,13 +245,13 @@ int hardcl(int *xrows, int *xcols, double *x, int *ncenters,
   
   *iter=0;
   for (m=0;m<*ncenters;m++){
-    t[m]=0;
-       }
+      t[m]=0;
+  }
    
   while(((*iter)++ < *itermax)){
-
-    oncent(xrows, xcols, x, ncenters, centers, cluster, clustersize,
-	   dist,iter,itermax,methrate,par, t, verbose);
+      
+      oncent(xrows, xcols, x, ncenters, centers, cluster, clustersize,
+	     dist,iter,itermax,methrate,par, t, verbose);
 
      
   }
