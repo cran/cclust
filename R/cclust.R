@@ -87,6 +87,17 @@ cclust <- function (x, centers, iter.max = 100, verbose = FALSE, dist = "euclide
   if (method == 3) {
         methrate <- NA
     }
+
+    withinss <- function(clobj, x){
+      
+      retval <- rep(0, nrow(clobj$centers))
+      x <- (x - clobj$centers[clobj$cluster, ])^2
+      for(k in 1:nrow(clobj$centers)){
+        retval[k] <- sum(x[clobj$cluster==k,])
+      }
+      retval
+    }
+
     within <- withinss(list(centers = centers, cluster = cluster), xold)
     
     retval <- list(centers = centers, initcenters = initcenters, 

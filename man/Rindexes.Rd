@@ -5,7 +5,7 @@
 \arguments{
 \item{clres}{An object of a clustering result}
 \item{x}{Data matrix}
-\item{index}{The indexes being calculated "calinski", "cindex", "db",
+\item{index}{The indexes that are calculated "calinski", "cindex", "db",
     "hartigan", "ratkowsky", "scott", "marriot", "ball", "trcovw",
     "tracew", "friedman", "rubin", "ssi", "likelihood", and "all" for all
     the indexes.}
