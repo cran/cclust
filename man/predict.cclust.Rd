@@ -1,22 +1,21 @@
 \name{predict.cclust}
 \title{Assign clusters to new data}
 \usage{
-predict.cclust(clobj, x)
+predict(y, x)
 }
 \alias{predict.cclust}
 \arguments{
- \item{clobj}{Object returned by a clustering algorithm such as
-   \code{\link{cclust}}}
- \item{x}{Data matrix}
+ \item{y}{Object of class \code{"cclust"} returned by a clustering algorithm such as \code{\link{cclust}}}
+ \item{x}{Data matrix where columns correspond to variables and rows to observations}
 }
 \description{
   Assigns each data point (row in \code{x}) the cluster corresponding to
-  the closest center found in \code{clobj}.
+  the closest center found in \code{y}.
 }
 \value{
-  \code{predict.cclust} returns an object of class "cclust".
+  \code{predict.cclust} returns an object of class \code{"cclust"}.
   Only \code{size} is changed as compared to the argument
-  \code{clobj}. 
+  \code{y}. 
   \item{cluster}{Vector containing the indices of the clusters where
     the data is mapped.}
   \item{size}{The number of data points in each cluster.}
@@ -45,7 +44,7 @@ y<-rbind(matrix(rnorm(33,sd=0.3),ncol=3),
 ycl<-predict(cl, y)
 plot(ycl,y)
 }
-\keyword{cclust}
+\keyword{cluster}
 
 
 

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <S.h>
 
-double mdian1_(double *x, int *n);
+double CC_median(double *x, int *n);
 
 int assign(int *xrows, int *xcols, double *x, int *ncenters,
 	   double *centers, int *cluster, int *clustersize,
@@ -90,7 +90,7 @@ int reloc(int *xrows, int *xcols, double *x, int *ncenters,
 		    xk[i] = x[l+(*xrows)*m];
 		    i++;
 		}
-	    centers[k+(*ncenters)*m] = mdian1_(xk, &clustersize[k]);
+	    centers[k+(*ncenters)*m] = CC_median(xk, &clustersize[k]);
 	}
     }
   }

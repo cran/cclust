@@ -3,21 +3,21 @@
 	-lf2c -lm   (in that order)
 */
 
-#include "R_ext/f2c.h"
+#include <R.h>
 
-/* Subroutine */ double mdian1_(x, n)
+/* Subroutine */ double CC_median(x, n)
 double *x;
-integer *n;
+Sint *n;
 {
   double xmed;
-  extern /* Subroutine */ int sort_();
-    static integer n2;
+  extern /* Subroutine */ int CC_sort();
+    static Sint n2;
 
     /* Parameter adjustments */
     --x;
 
     /* Function Body */
-    sort_(n, &x[1]);
+    CC_sort(n, &x[1]);
     n2 = *n / 2;
     if (n2 << 1 == *n) {
 	xmed = (x[n2] + x[n2 + 1]) * (float).5;
@@ -25,14 +25,14 @@ integer *n;
 	xmed = x[n2 + 1];
     }
     return xmed;
-} /* mdian1_ */
+} /* CC_median */
 
-/* Subroutine */ int sort_(n, ra)
-integer *n;
+/* Subroutine */ int CC_sort(n, ra)
+Sint *n;
 double *ra;
 {
 
-    static integer i__, j, l, ir;
+    static Sint i__, j, l, ir;
     static double rra;
     /* Parameter adjustments */
     --ra;
@@ -73,5 +73,6 @@ L20:
     }
     ra[i__] = rra;
     goto L10;
-} /* sort_ */
+} /* CC_sort */
+
 

@@ -1,19 +1,21 @@
 \name{clustindex}
 \title{Cluster Indexes}
-\usage{ clustindex ( clres, x, index = "all" ) }
+\usage{ clustindex ( y, x, index = "all" ) }
 \alias{clustindex}
 \arguments{
-\item{clres}{An object of a clustering result}
-\item{x}{Data matrix}
-\item{index}{The indexes that are calculated "calinski", "cindex", "db",
-    "hartigan", "ratkowsky", "scott", "marriot", "ball", "trcovw",
-    "tracew", "friedman", "rubin", "ssi", "likelihood", and "all" for all
-    the indexes.}
+\item{y}{Object of class \code{"cclust"} returned by a clustering algorithm such as \code{\link{kmeans}}}
+\item{x}{Data matrix where columns correspond to variables and rows to observations}
+\item{index}{The indexes that are calculated \code{"calinski"},
+  \code{"cindex"}, \code{"db"}, \code{"hartigan"}, \code{"ratkowsky"},
+  \code{"scott"}, \code{"marriot"}, \code{"ball"}, \code{"trcovw"},
+  \code{"tracew"}, \code{"friedman"}, \code{"rubin"}, \code{"ssi"},
+  \code{"likelihood"}, and \code{"all"} for all the
+  indexes. Abbreviations of these names are also accepted.}
 }
 
 \description{
-    \code{clres} is the result of a clustering algorithm of class such
-    as "cclust".
+    \code{y} is the result of a clustering algorithm of class such
+    as \code{"cclust"}.
     This function is calculating the values of several clustering
     indexes. The values of the indexes can be independenly used in order
     to determine the number of clusters existing in a data set.
@@ -26,7 +28,7 @@
     and between (\eqn{SSB}) the clusters. These statistics measure the
     dispersion of the data points in a cluster and between the clusters
     respectively. These indexes are:
-    \itemize{
+    \describe{
     	\item \bold{calinski}:
     	\eqn{(SSB/(k-1))/(SSW/(n-k))}, where \eqn{n} is the
     	number of data points and \eqn{k} is the number of clusters.
@@ -40,7 +42,7 @@
     The second group is based on the statistics of \eqn{T}, i.e., the
     scatter matrix of the data points, and \eqn{W}, which is the sum of the
     scatter matrices in every group. These indexes are:
-    \itemize{
+    \describe{
     	\item \bold{scott}: \eqn{n\log(|T|/|W|)}, where \eqn{n}
     	is the number of data points and \eqn{|\cdot|} stands for the
     	determinant of a matrix.
@@ -53,7 +55,7 @@
     	\item \bold{rubin}: \eqn{|T|/|W|}.}
     The third group consists of four algorithms not belonging to the
     previous ones and not having anything in common.
-    \itemize{
+    \describe{
     	\item \bold{cindex}: if the data set is binary,
     	then while the C-Index is a cluster
     	similarity measure, is expressed as:\cr
@@ -113,8 +115,6 @@ cl<-cclust(x,2,20,verbose=TRUE,method="kmeans")
 resultindexes <- clustindex(cl,x, index="all")
 resultindexes   
 }
-
-\keyword{index}
 \keyword{cluster}
 
 

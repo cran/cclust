@@ -12,17 +12,17 @@ print.cclust(cclust.obj)
 \alias{neuralgas}
 \alias{print.cclust}
 \arguments{
-\item{x}{Data matrix}
+\item{x}{Data matrix where columns correspond to variables and rows to observations}
 \item{centers}{Number of clusters or initial values for cluster centers}
 \item{iter.max}{Maximum number of iterations}
-\item{verbose}{If TRUE, make some output during learning}
-\item{dist}{If "euclidean", then mean square error, if "manhattan ",
-            the mean absolute error is used}
-\item{method}{If "kmeans",then we have the kmeans clustering method,
-              if "hardcl" we have the On-line Update (Hard Competitive
-	      learning) method, and if "neuralgas", we have the Neural
-	      Gas (Soft Competitive learning) method.}
-\item{rate.method}{If "kmeans", then k-means learning rate, otherwise
+\item{verbose}{If \code{TRUE}, make some output during learning}
+\item{dist}{If \code{"euclidean"}, then mean square error, if \code{"manhattan "}, the mean absolute error is used}
+\item{method}{If \code{"kmeans"}, then we have the kmeans clustering method,
+              if \code{"hardcl"} we have the On-line Update (Hard Competitive
+	      learning) method, and if \code{"neuralgas"}, we have the Neural
+	      Gas (Soft Competitive learning) method. Abbreviations of
+	      the method names are accepted.}
+\item{rate.method}{If \code{"kmeans"}, then k-means learning rate, otherwise
                    exponential decaying learning rate.
                    It is used only for the Hardcl method.}
 \item{rate.par}{The parameters of the learning rate.} 
@@ -39,40 +39,40 @@ print.cclust(cclust.obj)
   iteration or the maximum number of iterations (given by
   \code{iter.max}) is reached.
 
-  If \code{verbose} is TRUE, only for "kmeans" method, displays
+  If \code{verbose} is \code{TRUE}, only for \code{"kmeans"} method, displays
   for each iteration the number of the iteration and the numbers
   of cluster indices which have changed since the last iteration is given.
 
-  If \code{dist} is "euclidean", the distance between the cluster center
+  If \code{dist} is \code{"euclidean"}, the distance between the cluster center
   and the data points is the Euclidian distance (ordinary kmeans
-  algorithm). If "manhattan", the distance between the
+  algorithm). If \code{"manhattan"}, the distance between the
   cluster center and the data points is the sum of the absolute values
   of the distances of the coordinates.
 
-  If \code{method} is "kmeans",then we have the kmeans clustering
+  If \code{method} is \code{"kmeans"}, then we have the kmeans clustering
   method, which works by repeatedly moving all cluster centers
-  to the mean of their Voronoi sets. If "hardcl" we have the On-line
+  to the mean of their Voronoi sets. If \code{"hardcl"} we have the On-line
   Update (Hard Competitive learning) method, which works by performing
-  an update directly after each input signal, and if "neuralgas" we have
+  an update directly after each input signal, and if \code{"neuralgas"} we have
   the Neural Gas (Soft Competitive learning) method, that sorts for each
   input signal the units of the network according to the distance
   of their reference vectors to input signal.
 
 
-  If \code{rate.method} is "polynomial", the polynomial learning rate
+  If \code{rate.method} is \code{"polynomial"}, the polynomial learning rate
   is used, that means \eqn{1/t}, where t stands for the number of input
   data for which a particular cluster has benn the winner so far.
-  If "exponentially decaying", the exponential decaying learning rate
+  If \code{"exponentially decaying"}, the exponential decaying learning rate
   is used according to \eqn{par1*{(par2/par1)}^{(iter/itermax)}} where \eqn{par1}
   and \eqn{par2} are the initial and final values of the l.rate.
     
   The parameters \code{rate.par} of the learning rate, where
-  if \code{rate.method} is "polynomial" then by default rate.par=1.0,
+  if \code{rate.method} is \code{"polynomial"} then by default rate.par=1.0,
   otherwise rate.par=(0.5,1e-5)}.
   
 }
 \value{
-  \code{cclust} returns an object of class "cclust".
+  \code{cclust} returns an object of class \code{"cclust"}.
   \item{centers}{The final cluster centers.}
   \item{initcenters}{The initial cluster centers.}
   \item{ncenters}{The number of the centers.}
@@ -91,7 +91,7 @@ print.cclust(cclust.obj)
       specified by their names.}
   \item{withinss}{Returns the sum of square distances within the clusters.}
 }
-\author{Evgenia Dimitriadou, Friedrich Leisch and Andreas Weingessel}
+\author{Evgenia Dimitriadou}
 \seealso{\code{\link{plot.cclust}}, \code{\link{predict.cclust}}}
 \examples{
 # a 2-dimensional example
@@ -114,7 +114,7 @@ y<-rbind(matrix(rnorm(33,sd=0.3),ncol=3),
          ycl<-predict(cl, y)
          plot(ycl,y)
 }
-\keyword{cclust}
+\keyword{cluster}
 
 
 

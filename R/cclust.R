@@ -97,7 +97,7 @@ cclust <- function (x, centers, iter.max = 100, verbose = FALSE, dist = "euclide
       }
       retval
     }
-
+    
     within <- withinss(list(centers = centers, cluster = cluster), xold)
     
     retval <- list(centers = centers, initcenters = initcenters, 

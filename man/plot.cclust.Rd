@@ -1,13 +1,12 @@
 \name{plot.cclust}
 \title{Plot Clustered Data}
 \usage{
-plot.cclust(clobj, x, centers=TRUE, initcenters=FALSE)
+plot(y, x, centers=TRUE, initcenters=FALSE)
 }
 \alias{plot.cclust}
 \arguments{
- \item{clobj}{Object returned by a clustering algorithm such as
-   \code{\link{cclust}}}
- \item{x}{Data matrix}
+ \item{y}{Object of class \code{"cclust"} returned by a clustering algorithm such as \code{\link{cclust}}}
+ \item{x}{Data matrix where columns correspond to variables and rows to observations}
  \item{centers}{Mark cluster centers with \code{"X"} (for 2-dimensional
    data only)}
  \item{initcenters}{Mark initial cluster centers with \code{"+"} (for
@@ -40,7 +39,7 @@ y<-rbind(matrix(rnorm(33,sd=0.3),ncol=3),
 ycl<-predict(cl, y)
 plot(ycl,y)
 }
-\keyword{cclust}
+\keyword{cluster}
 
 
 
