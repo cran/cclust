@@ -1,6 +1,6 @@
 Package: cclust
 Title: Convex Clustering Methods and Clustering Indexes
-Version: 0.6-7
+Version: 0.6-8
 Author: Evgenia Dimitriadou <dimi@ci.tuwien.ac.at>
 Maintainer: Evgenia Dimitriadou <dimi@ci.tuwien.ac.at>
 Description: Convex Clustering methods, including Kmeans algorithm,

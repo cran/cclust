@@ -1,5 +1,5 @@
 #include <math.h>
-#include <stdio.h>
+/*#include <stdio.h>*/
 #include <S.h>
 
 double CC_median(double *x, int *n);
@@ -121,7 +121,7 @@ int kmeans(int *xrows, int *xcols, double *x, int *ncenters,
       }
     }
     if(*verbose){
-      printf("Iteration: %3d    Changes: %13d \n", *iter, change);
+      Rprintf("Iteration: %3d    Changes: %13d \n", *iter, change);
     }
     changes[(*iter)-1] = change;
   }
@@ -224,7 +224,7 @@ int  oncent(int *xrows, int *xcols, double *x, int *ncenters,
   }
   ermin=(serror)/(*xrows);
   if (*verbose){
-      printf("Iteration: %3d    Error:   %13.10f\n",*iter,ermin);
+      Rprintf("Iteration: %3d    Error:   %13.10f\n",*iter,ermin);
   }
   return 0; 
   }
@@ -414,7 +414,7 @@ int  oncentb(int *xrows, int *xcols, double *x, int *ncenters,
   
   /*if (*iter==1 | *iter==*itermax){*/
   if (*verbose){
-      printf("Iteration: %3d    Error:   %13.10f\n",*iter,ermin);
+      Rprintf("Iteration: %3d    Error:   %13.10f\n",*iter,ermin);
        }
   /*}*/
   /* printf("Iter:%d\n...",*iter);*/
