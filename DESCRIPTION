@@ -1,6 +1,6 @@
 Package: cclust
 Title: Convex Clustering Methods and Clustering Indexes
-Version: 0.6-4
+Version: 0.6-5
 Author: Evgenia Dimitriadou <dimi@ci.tuwien.ac.at>
 Description: Convex Clustering methods, including Kmeans algorithm,
 	On-line Update algorithm (Hard Competitive Learning) and

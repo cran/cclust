@@ -32,7 +32,7 @@
     	number of data points and \eqn{k} is the number of clusters.
     	\item \bold{hartigan}: then \eqn{\log(SSB/SSW)}.
     	\item \bold{ratkowsky}: 
-    	\eqn{mean(sqrt(varSSB/varSST))}, where \eqn{varSSB} stands for
+    	\eqn{mean(\sqrt{(varSSB/varSST)})}, where \eqn{varSSB} stands for
     	the \eqn{SSB} for every variable and \eqn{varSST} for the total sum of
     	squares for every variable.
     	\item \bold{ball}: \eqn{SSW/k}, where \eqn{k} is the
@@ -46,9 +46,9 @@
     	determinant of a matrix.
     	\item \bold{marriot}: \eqn{k^2 |W|}, where \eqn{k} is
     	the number of clusters.
-    	\item \bold{trcovw}: \eqn{\Trace \Cov W}.
-    	\item \bold{tracew}: \eqn{\Trace W}.
-    	\item \bold{friedman}: \eqn{\Trace W^(-1) B}, where
+    	\item \bold{trcovw}: \eqn{Trace Cov W}.
+    	\item \bold{tracew}: \eqn{Trace W}.
+    	\item \bold{friedman}: \eqn{Trace W^{(-1)} B}, where
     	\eqn{B} is the scatter matrix of the cluster centers.
     	\item \bold{rubin}: \eqn{|T|/|W|}.}
     The third group consists of four algorithms not belonging to the
@@ -57,21 +57,21 @@
     	\item \bold{cindex}: if the data set is binary,
     	then while the C-Index is a cluster
     	similarity measure, is expressed as:\cr
-    	\eqn{[d_(w)-\min(d_(w))]/[\max(d_(w))-\min(d_(w))]}, where
-	\eqn{d_(w)}
-    	is the sum of all \eqn{n_(d)} within cluster distances,
-    	\eqn{\min(d_(w))} is the sum of the \eqn{n_(d)} smallest pairwise
-    	distances in the data set, and \eqn{\max (d_(w))} is the sum of the
-    	\eqn{n_(d)} biggest pairwise distances. In order to compute the
+    	\eqn{[d_{(w)}-\min(d_{(w)})]/[\max(d_{(w)})-\min(d_{(w)})]}, where
+	\eqn{d_{(w)}}
+    	is the sum of all \eqn{n_{(d)}} within cluster distances,
+    	\eqn{\min(d_{(w)})} is the sum of the \eqn{n_{(d)}} smallest pairwise
+    	distances in the data set, and \eqn{\max (d_{(w)})} is the sum of the
+    	\eqn{n_{(d)}} biggest pairwise distances. In order to compute the
     	C-Index all pairwise distances in the data set have to be computed and
     	stored. In the case of binary data, the storage of the distances is
     	creating no problems since there are only a few possible
     	distances. However, the computation of all distances can make this
     	index prohibitive for large data sets.
-    	\item \bold{db}: \eqn{R=(1/n)*sum(R_(i))}
-    	where \eqn{R_(i)} stands for the maximum value of \eqn{R_(ij)} for
-    	\eqn{i\neq j}, and \eqn{R_(ij)} for
-    	\eqn{R_(ij)=(SSW_(i)+SSW_(j))/DC_(ij)}, where \eqn{DC_(ij)} is the
+    	\item \bold{db}: \eqn{R=(1/n)*sum(R_{(i)})}
+    	where \eqn{R_{(i)}} stands for the maximum value of \eqn{R_{(ij)}} for
+    	\eqn{i\neq j}, and \eqn{R_{(ij)}} for
+    	\eqn{R_{(ij)}=(SSW_{(i)}+SSW_{(j)})/DC_{(ij)}}, where \eqn{DC_{(ij)}} is the
     	distance between the centers of two clusters \eqn{i, j}.
     	\item \bold{likelihood}: under the assumption of
     	independence of the variables within a cluster, a cluster solution
@@ -97,7 +97,7 @@
 \references{Andreas Weingessel, Evgenia Dimitriadou and Sara Dolnicar,
     An Examination Of Indexes For Determining The Number
     Of Clusters In Binary Data Sets,\cr
-    \url{http://www.wu-wien.ac.at/am/workpap.html#29}\cr
+    \url{http://www.wu-wien.ac.at/am/wp99.htm#29}\cr
     and the references therein.
 }
 \author{Evgenia Dimitriadou and Andreas Weingessel

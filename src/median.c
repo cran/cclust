@@ -3,7 +3,7 @@
 	-lf2c -lm   (in that order)
 */
 
-#include "f2c.h"
+#include "R_ext/f2c.h"
 
 /* Subroutine */ double mdian1_(x, n)
 double *x;

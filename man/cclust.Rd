@@ -60,11 +60,11 @@ print.cclust(cclust.obj)
 
 
   If \code{rate.method} is "polynomial", the polynomial learning rate
-  is used, that means 1/t, where t stands for the number of input
+  is used, that means \eqn{1/t}, where t stands for the number of input
   data for which a particular cluster has benn the winner so far.
   If "exponentially decaying", the exponential decaying learning rate
-  is used according to par1*{(par2/par1)]^(iter/itermax) where par1
-  and par2 are the initial and final values of the l.rate.
+  is used according to \eqn{par1*{(par2/par1)}^{(iter/itermax)}} where \eqn{par1}
+  and \eqn{par2} are the initial and final values of the l.rate.
     
   The parameters \code{rate.par} of the learning rate, where
   if \code{rate.method} is "polynomial" then by default rate.par=1.0,
