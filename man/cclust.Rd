@@ -3,8 +3,6 @@
 \usage{
 cclust (x, centers, iter.max=100, verbose=FALSE, dist="euclidean",
         method= "kmeans", rate.method="polynomial", rate.par=NULL)
-
-print.cclust(cclust.obj)
 }
 \alias{cclust}
 \alias{kmeans}
@@ -92,27 +90,27 @@ print.cclust(cclust.obj)
   \item{withinss}{Returns the sum of square distances within the clusters.}
 }
 \author{Evgenia Dimitriadou}
-\seealso{\code{\link{plot.cclust}}, \code{\link{predict.cclust}}}
+\seealso{\code{\link{predict.cclust}}}
 \examples{
 # a 2-dimensional example
 x<-rbind(matrix(rnorm(100,sd=0.3),ncol=2),
          matrix(rnorm(100,mean=1,sd=0.3),ncol=2))
 cl<-cclust(x,2,20,verbose=TRUE,method="kmeans")
-plot(cl,x)   
+plot(x, col=cl$cluster)   
 
 # a 3-dimensional example 
 x<-rbind(matrix(rnorm(150,sd=0.3),ncol=3),
          matrix(rnorm(150,mean=1,sd=0.3),ncol=3),
          matrix(rnorm(150,mean=2,sd=0.3),ncol=3))
 cl<-cclust(x,6,20,verbose=TRUE,method="kmeans")
-plot(cl,x)
+plot(x, col=cl$cluster)
 
 # assign classes to some new data
 y<-rbind(matrix(rnorm(33,sd=0.3),ncol=3),
          matrix(rnorm(33,mean=1,sd=0.3),ncol=3),
          matrix(rnorm(3,mean=2,sd=0.3),ncol=3))
          ycl<-predict(cl, y)
-         plot(ycl,y)
+         plot(y, col=ycl$cluster)
 }
 \keyword{cluster}
 

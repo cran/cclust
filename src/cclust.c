@@ -263,7 +263,7 @@ int hardcl(int *xrows, int *xcols, double *x, int *ncenters,
      clustersize[cluster[k]]++;
   }
   return 0;
-}
+        }
      
 
 

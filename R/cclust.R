@@ -111,9 +111,9 @@ cclust <- function (x, centers, iter.max = 100, verbose = FALSE, dist = "euclide
 
 
 
-print.cclust <- function (clobj)
+print.cclust <- function (x, ...)
   {
-  
+    clobj <- x
     if (!is.null(clobj$iter))
       cat("\n                            Clustering on Training Set\n\n\n")
     else
@@ -138,29 +138,11 @@ print.cclust <- function (clobj)
  
   }
 
-plot.cclust <- function(clobj, x, centers=TRUE, initcenters=FALSE,
-                         color=rainbow(clobj$ncenters),...){
-  
-  x <- as.matrix(x)
-  
-  cl <- predict(clobj, x)
 
-  
-  if(dim(x)[2]>2){
-    pairs(x, col=color[cl$cluster], ...)
-    }
-  else{
-    plot(x, col=color[cl$cluster], ...)
-    if(centers)
-      points(cl$centers, pch=4,col=color,cex=2)
-    if(initcenters)
-      points(clobj$initcenters, pch=3,col=color,cex=2)
-  }
-}
+predict.cclust <- function(object, newdata, ...){
 
-
-predict.cclust <- function(clobj, x){
-
+  clobj <- object
+  x <- newdata
   xrows<-dim(x)[1]
   xcols<-dim(x)[2]
   ncenters <- clobj$ncenters

@@ -1,7 +1,7 @@
-\name{clustindex}
+\name{clustIndex}
 \title{Cluster Indexes}
-\usage{ clustindex ( y, x, index = "all" ) }
-\alias{clustindex}
+\usage{ clustIndex ( y, x, index = "all" ) }
+\alias{clustIndex}
 \arguments{
 \item{y}{Object of class \code{"cclust"} returned by a clustering algorithm such as \code{\link{kmeans}}}
 \item{x}{Data matrix where columns correspond to variables and rows to observations}
@@ -112,7 +112,7 @@
 x<-rbind(matrix(rnorm(100,sd=0.3),ncol=2),
          matrix(rnorm(100,mean=1,sd=0.3),ncol=2))
 cl<-cclust(x,2,20,verbose=TRUE,method="kmeans")
-resultindexes <- clustindex(cl,x, index="all")
+resultindexes <- clustIndex(cl,x, index="all")
 resultindexes   
 }
 \keyword{cluster}

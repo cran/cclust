@@ -1,8 +1,8 @@
 require(mva)
 
-clustindex <- function( clres, x, index="all" )
+clustIndex <- function( y, x, index="all" )
   {
-
+    clres <- y
 ################################################################### 
 #########SESSION 1: Necessary non-commented functions##############
 ###################################################################    

@@ -1,4 +1,3 @@
-clustindex               Cluster Indexes
+clustIndex               Cluster Indexes
 cclust                   Convex Clustering
-plot.cclust              Plot Clustered Data
 predict.cclust           Assign clusters to new data
