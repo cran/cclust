@@ -1,4 +1,3 @@
-require(mva)
 
 clustIndex <- function( y, x, index="all" )
   {
