@@ -24,7 +24,6 @@
 }
 \author{Evgenia Dimitriadou}
 \seealso{\code{\link{cclust}}}
-}
 \examples{
 # a 2-dimensional example
 x<-rbind(matrix(rnorm(100,sd=0.3),ncol=2),
