@@ -14,11 +14,11 @@
 }
 
 \description{
-    \code{y} is the result of a clustering algorithm of class such
-    as \code{"cclust"}.
-    This function is calculating the values of several clustering
-    indexes. The values of the indexes can be independenly used in order
-    to determine the number of clusters existing in a data set.
+  \code{y} is the result of a clustering algorithm of class such
+  as \code{"cclust"}.
+  This function is calculating the values of several clustering
+  indexes. The values of the indexes can be independently used in order
+  to determine the number of clusters existing in a data set.
 }
 
 \details{

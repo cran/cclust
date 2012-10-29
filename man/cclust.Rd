@@ -84,7 +84,7 @@ cclust (x, centers, iter.max=100, verbose=FALSE, dist="euclidean",
   \item{changes}{The number of changes performed in each iteration
       step with the Kmeans algorithm.}
   \item{dist}{The distance measure used.}
-  \item{method}{The agorithm method being used.}
+  \item{method}{The algorithm method being used.}
   \item{rate.method}{The learning rate being used by the Hardcl clustering
       method.}
   \item{rate.par}{The parameters of the learning rate.}
