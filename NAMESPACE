@@ -1,10 +1,5 @@
-# Default NAMESPACE created by R
-# Remove the previous line if you edit this file
+useDynLib("cclust")
 
-# Export all names
-exportPattern(".")
-
-# Import all packages listed as Imports or Depends
-import(
-  stats
-)
+export("cclust", "clustIndex")
+S3method("predict", "cclust")
+S3method("print", "cclust")
