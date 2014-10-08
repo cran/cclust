@@ -264,9 +264,9 @@ clustIndex <- function( y, x, index="all" )
         span <- cmax - cmin
         csizemax <- clsize[cmaxi]
         csizemin <- clsize[cmini]
-        
+
         hiest <- nvar
-        hiestw <- hiest * max(max(csizemax), max(csizemin)) * exp(-min(absmdif))
+        hiestw <- hiest * max(span) * max(max(csizemax), max(csizemin)) * exp(-min(absmdif))
         
         sist <- sum(span)/hiest
         
