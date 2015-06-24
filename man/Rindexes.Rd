@@ -110,7 +110,7 @@
 \references{Andreas Weingessel, Evgenia Dimitriadou and Sara Dolnicar,
     An Examination Of Indexes For Determining The Number
     Of Clusters In Binary Data Sets,\cr
-    \url{http://www.wu-wien.ac.at/am/wp99.htm#29}\cr
+    \url{http://epub.wu.ac.at/1542/}\cr
     and the references therein.
 }
 \author{Evgenia Dimitriadou and Andreas Weingessel
@@ -127,8 +127,3 @@ resultindexes <- clustIndex(cl,x, index="all")
 resultindexes   
 }
 \keyword{cluster}
-
-
-
-
-
