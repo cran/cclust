@@ -125,8 +125,7 @@ clustIndex <- function( y, x, index="all" )
         nc <- ncol(x)
         d <- integer(nc+1)
         
-        retval <- .C("count", xrows=nr, xcols=nc, x=as.integer(x), d=d,
-                     PACKAGE="cclust")
+        retval <- .C(R_count, xrows=nr, xcols=nc, x=as.integer(x), d=d)
         
         d <- retval$d
         
@@ -378,12 +377,3 @@ clustIndex <- function( y, x, index="all" )
 
     return(vecallindex)
   }
-
-
-
-
-
-
-
-
-

@@ -50,40 +50,50 @@ cclust <- function (x, centers, iter.max = 100, verbose = FALSE, dist = "euclide
     cluster <- integer(xrows)
     clustersize <- integer(ncenters)
     if (method == 1) {
-      retval <- .C("kmeans", xrows = as.integer(xrows),
-                   xcols = as.integer(xcols), 
-                   x = as.double(x), ncenters = as.integer(ncenters), 
-                   centers = as.double(centers),
-                   cluster = as.integer(cluster), 
-                   iter.max = as.integer(iter.max), iter = as.integer(iter), 
-                   changes = as.integer(changes),
-                   clustersize = as.integer(clustersize), 
-                   verbose = as.integer(verbose),
-                   dist = as.integer(dist-1), PACKAGE="cclust")
+        retval <- .C(R_kmeans,
+                     xrows = as.integer(xrows),
+                     xcols = as.integer(xcols), 
+                     x = as.double(x),
+                     ncenters = as.integer(ncenters), 
+                     centers = as.double(centers),
+                     cluster = as.integer(cluster), 
+                     iter.max = as.integer(iter.max),
+                     iter = as.integer(iter), 
+                     changes = as.integer(changes),
+                     clustersize = as.integer(clustersize), 
+                     verbose = as.integer(verbose),
+                     dist = as.integer(dist-1))
     }
     else if (method == 2) {
-      retval <- .C("hardcl", xrows = as.integer(xrows), xcols = as.integer(xcols), 
-                   x = as.double(x), ncenters = as.integer(ncenters), 
-                   centers = as.double(centers),
-                   cluster = as.integer(cluster), 
-                   iter.max = as.integer(iter.max), iter = as.integer(iter), 
-                   clustersize = as.integer(clustersize),
-                   verbose = as.integer(verbose), 
-                   dist = as.integer(dist-1),
-                   methrate = as.integer(rate.method-1), 
-                   par = as.double(rate.par), PACKAGE="cclust")
+        retval <- .C(R_hardcl,
+                     xrows = as.integer(xrows),
+                     xcols = as.integer(xcols), 
+                     x = as.double(x),
+                     ncenters = as.integer(ncenters), 
+                     centers = as.double(centers),
+                     cluster = as.integer(cluster), 
+                     iter.max = as.integer(iter.max),
+                     iter = as.integer(iter), 
+                     clustersize = as.integer(clustersize),
+                     verbose = as.integer(verbose), 
+                     dist = as.integer(dist-1),
+                     methrate = as.integer(rate.method-1), 
+                     par = as.double(rate.par))
     }
     else if (method == 3) {
-      retval <- .C("neuralgas", xrows = as.integer(xrows), 
-                   xcols = as.integer(xcols), x = as.double(x),
-                   ncenters = as.integer(ncenters), 
-                   centers = as.double(centers),
-                   cluster = as.integer(cluster), 
-                   iter.max = as.integer(iter.max), iter = as.integer(iter), 
-                   clustersize = as.integer(clustersize),
-                   verbose = as.integer(verbose), 
-                   dist = as.integer(dist-1), par = as.double(rate.par),
-                   PACKAGE="cclust")
+        retval <- .C(R_neuralgas,
+                     xrows = as.integer(xrows), 
+                     xcols = as.integer(xcols),
+                     x = as.double(x),
+                     ncenters = as.integer(ncenters), 
+                     centers = as.double(centers),
+                     cluster = as.integer(cluster), 
+                     iter.max = as.integer(iter.max),
+                     iter = as.integer(iter), 
+                     clustersize = as.integer(clustersize),
+                     verbose = as.integer(verbose), 
+                     dist = as.integer(dist-1),
+                     par = as.double(rate.par))
     }
     centers <- matrix(retval$centers, ncol = xcols, dimnames = dimnames(initcenters))
     cluster <- retval$cluster + 1
@@ -156,14 +166,12 @@ predict.cclust <- function(object, newdata, ...){
   ncenters <- clobj$ncenters
   cluster <- integer(xrows)
   clustersize <- integer(ncenters)
-  
 
   if(dim(clobj$centers)[2] != xcols){
     stop("Number of variables in cluster object and x are not the same!")
   }
 
-  
-  retval <- .C("assign",
+  retval <- .C(R_assign,
                xrows = as.integer(xrows),
                xcols = as.integer(xcols),
                x = as.double(x),
@@ -171,10 +179,7 @@ predict.cclust <- function(object, newdata, ...){
                centers = as.double(clobj$centers),
                cluster = as.integer(cluster),
                clustersize = as.integer(clustersize),
-               dist = as.integer(clobj$dist-1),PACKAGE="cclust")
-
-  
-     
+               dist = as.integer(clobj$dist-1))
 
   clobj$initcenters <- NULL
   clobj$iter <- NULL
@@ -184,6 +189,3 @@ predict.cclust <- function(object, newdata, ...){
 
   return(clobj)
 }
-
-
-
