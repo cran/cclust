@@ -5,6 +5,8 @@
 
 #include <R.h>
 
+typedef int Sint;
+
 /* Subroutine */ double CC_median(x, n)
 double *x;
 Sint *n;

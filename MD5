@@ -1,4 +1,4 @@
-fa4c7f584815ac9a07e9b2a62c8b61fb *DESCRIPTION
+c1504a91982a89d4623743dd2f309762 *DESCRIPTION
 5eafe782a2d36cca64dfaef31a902d07 *NAMESPACE
 b074e19b04dd8f707037db8a24da02dc *R/Rindexes.R
 bbd7454eeeec2ef9317a35c85c1f737c *R/cclust.R
@@ -8,4 +8,4 @@ d13dc6669e3aa004324a57ec31b065f3 *man/predict.cclust.Rd
 b5219e351f3c999721cca24fabad13e3 *src/cclust.c
 a381eef5deb34f265fe4cfe3f33e1dbf *src/count.c
 7c71d9c383bc28c39c08dfe0b395cc67 *src/init.c
-a92235c4ff2f654d20abc8f228610d3d *src/median.c
+d134ac55573e14d83c1380b1a5f29710 *src/median.c
