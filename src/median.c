@@ -7,12 +7,10 @@
 
 typedef int Sint;
 
-/* Subroutine */ double CC_median(x, n)
-double *x;
-Sint *n;
+/* Subroutine */ double CC_median(double *x, Sint *n)
 {
-  double xmed;
-  extern /* Subroutine */ int CC_sort();
+    double xmed;
+    extern /* Subroutine */ int CC_sort(Sint *n, double *ra);
     static Sint n2;
 
     /* Parameter adjustments */
@@ -29,11 +27,8 @@ Sint *n;
     return xmed;
 } /* CC_median */
 
-/* Subroutine */ int CC_sort(n, ra)
-Sint *n;
-double *ra;
+/* Subroutine */ int CC_sort(Sint *n, double *ra)
 {
-
     static Sint i__, j, l, ir;
     static double rra;
     /* Parameter adjustments */
